@@ -1,32 +1,35 @@
-# Prerequisites
-*.d
+# Author: mohsin@hazen.ai
+# References for the contents of this file:
+#     Joakim Elofsson's answer on StackOverflow to question at the following
+#     link (https://stackoverflow.com/questions/987142/)
+# Joakim Elofsson's StackOverflow profile link:
+#     Joakim Elofsson (https://stackoverflow.com/users/109869/joakim-elofsson)
 
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
+# Ignore everything
+*
 
-# Precompiled Headers
-*.gch
-*.pch
+# But not these files...
+!.env
+!.gitignore
+!docker-compose.yml
+!README.md
+!dockerfiles/*.Dockerfile
+!docs/*.md
+!LICENSE
+!requirements/*.txt
+!scripts/*.py
+!scripts/*.sh
 
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
+#C++
+!include/*/*.h
+!include/*.h
+!src/*.h
+!src/*.cc
+!src/*/*.h
+!src/*/*.cc
 
-# Fortran module files
-*.mod
-*.smod
+# ...even if they are in subdirectories
+!*/
 
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
-
-# Executables
-*.exe
-*.out
-*.app
+# if the files to be tracked are in subdirectories
+# !*/include/*.h
