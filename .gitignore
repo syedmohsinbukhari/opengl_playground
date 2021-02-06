@@ -21,13 +21,16 @@
 !scripts/*.py
 !scripts/*.sh
 
-#C++
+# C++
 !include/*/*.h
 !include/*.h
 !src/*.h
 !src/*.cc
 !src/*/*.h
 !src/*/*.cc
+
+# Shaders
+!shaders/*.shader
 
 # ...even if they are in subdirectories
 !*/
