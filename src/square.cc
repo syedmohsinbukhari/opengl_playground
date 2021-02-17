@@ -2,7 +2,28 @@
 #include<GLFW/glfw3.h>
 #include<iostream>
 #include<fstream>
+#include<signal.h>
 #include<sstream>
+#include<string>
+
+
+#define ASSERT(x) if (!(x)) raise(SIGTRAP);
+#define GLCall(x) GLClearError();\
+    x;\
+    ASSERT(GLLogCall(#x, __LINE__))
+
+static void GLClearError() {
+    while (glGetError() != GL_NO_ERROR);
+}
+
+static bool GLLogCall(const char* func_name, int line) {
+    while (GLenum error = glGetError()) {
+        std::cout << "[" << func_name << ":" << line << "]";
+        std::cout << "[OpenGL Error] (" << error << ")" << std::endl;
+        return false;
+    }
+    return true;
+}
 
 struct ShaderProgramSource {
     std::string vertexSource;
@@ -154,7 +175,7 @@ int main(void)
         glClear(GL_COLOR_BUFFER_BIT);
 
         /* Make a triangle here */
-        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr);
+        GLCall(glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr));
 
         /* Swap front and back buffers */
         glfwSwapBuffers(window);
