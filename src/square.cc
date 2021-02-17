@@ -154,7 +154,6 @@ int main(void)
         glClear(GL_COLOR_BUFFER_BIT);
 
         /* Make a triangle here */
-        glDrawArrays(GL_TRIANGLES, 0, 6);
         glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr);
 
         /* Swap front and back buffers */
